@@ -1,5 +1,7 @@
 # SCRIPT_ISO_EST
 Grupo conformado por Jose Carlos Rodriguez , Jairo Dominguez , Miguel Figueroa , Noelia Medina , Pedro Pozo y Francisco Javier Cruces 
+El programa esta conformado por dos ficheros uno principal y uno que contiene las funciones .
+
 
 Funciones:
 1. Comprobar si tenemos conexion a internet 
@@ -8,3 +10,4 @@ Funciones:
 4. Ver si los paquetes lvm2 mdadm dosfstools sgdisk  
 5. Comprobar el numero de dispositivos libres hay 
 6. Si hay 4 , particionaremos 1 disco como en la practica 5
+
