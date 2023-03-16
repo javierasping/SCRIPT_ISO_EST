@@ -34,3 +34,25 @@ function f_existemdadm {
         return 1
         fi
 }
+
+
+function f_existedosfstools {
+        if  which dosfstools; then
+        echo "El comando dosfstools se encuentra en el sistema."
+        return 0
+        else
+        echo "El comando dosfstools no se encuentra en el sistema."
+        return 1
+        fi
+}
+
+
+function f_existegdisk {
+        if  which sgdisk; then
+        echo "El comando sgdisk se encuentra en el sistema."
+        return 0
+        else
+        echo "El comando sgdisk no se encuentra en el sistema."
+        return 1
+        fi
+}
