@@ -2,6 +2,8 @@
 Grupo conformado por Jose Carlos Rodriguez , Jairo Dominguez , Miguel Figueroa , Noelia Medina , Pedro Pozo y Francisco Javier Cruces 
 El programa esta conformado por dos ficheros uno principal y uno que contiene las funciones .
 
+Crearemos el siguiente esquema :
+![](./LVM_R5.png)
 
 Funciones:
 1. Comprobar si tenemos conexion a internet 
