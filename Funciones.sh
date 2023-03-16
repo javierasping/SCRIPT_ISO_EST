@@ -13,6 +13,11 @@ function f_conexion {
          fi
  }
 
+
+
+#3.Comprobar en que sistemas operativo estamos
+
+
  #4. Comprobar si están los paquetes LVM2, mdadm, dosfstools, sgdisk
 
  function f_existeLVM2 {
