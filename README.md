@@ -7,18 +7,19 @@ Crearemos el siguiente esquema :
 ![](./LVM_R5.png)
 
 Funciones:
-1. Comprobar si somos root
-2. Comprobar si tenemos conexion a internet 
-3. Comprobar en que sistemas operativo estamos
-4. Actualizar los repositorios (dependiendo si es Debian o Rocky)
-5. Ver si los paquetes lvm2 mdadm dosfstools sgdisk  
-6. Comprobar el numero de dispositivos libres hay y ademas que estos esten vacios (Necesitamos 4 )
-7. Si hay 4 , particionaremos 1 disco como en la practica 5
-8. Copiaremos la tabla de particiones del disco 1 al disco 2,3,4.
-9. Crearemos el raid 5
+1. Comprobar si somos root (JAIRO)
+2. Comprobar si tenemos conexion a internet (PEDRO)
+3. Comprobar en que sistemas operativo estamos (NOELIA)
+4. Actualizar los repositorios (dependiendo si es Debian o Rocky)(NOELIA)
+5. Ver si los paquetes lvm2 mdadm dosfstools sgdisk(PEDRO)
+6. Comprobar el numero de dispositivos libres hay y ademas que estos esten vacios (Necesitamos 4 ) (MIGUEL)
+7. Si hay 4 , particionaremos 1 disco como en la practica 5 (MIGUEL)
+8. Copiaremos la tabla de particiones del disco 1 al disco 2,3,4. (PEPE)
+9. Crearemos el raid 5 , 4to disco spare (PEPE)
 10. Creamos el volumen fisico
 11. Creamos el grupo de volumenes
 12. Creamos los discos logicos 
+
 
 ### Acceso a instancia:
 IP: 172.22.201.199
