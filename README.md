@@ -19,3 +19,7 @@ Funciones:
 10. Creamos el grupo de volumenes
 11. Creamos los discos logicos 
 
+### Acceso a instancia:
+IP: 172.22.201.199
+Usuario: debian
+Contraseña: debian
