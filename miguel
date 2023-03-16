@@ -1,0 +1,15 @@
+#!/bin/sh
+#Autor: Miguel F.E.
+#Version:
+#Descripción:miguel
+
+======Zona de declaración de variables======
+$vdb
+
+
+======Zona de declaración de funciones======
+
+f_detectadiscosvacios {
+	for i in {b..e};
+	do sfdisk -d /dev/vd$i | grep "does not contain" |
+}
