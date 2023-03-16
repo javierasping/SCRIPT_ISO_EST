@@ -1,7 +1,7 @@
 #!/bin/bash
 #Fichero de funciones
 
-#1. comprobamos si tenemos conexión
+#2. comprobamos si tenemos conexión
 
 function f_conexion {
          if ping -c 1 -q 8.8.8.8 > /dev/null; then
@@ -17,8 +17,24 @@ function f_conexion {
 
 #3.Comprobar en que sistemas operativo estamos
 
+function f_sistemaoperativo {
+                  cat /etc/os-release | grep 'ID'
+              echo -e “El sistema $sistema operativo es:”
+}
 
- #4. Comprobar si están los paquetes LVM2, mdadm, dosfstools, sgdisk
+
+#4.Actualizar los repositorios 
+
+function f_actualización {
+            sudo apt update -y
+            if [ $? -eq 0 ]; then
+            echo -e “Se han actualizado los repositorios”
+            else
+            echo -e “No se han podido actualizar por repositorios”
+            exit 1
+            fi
+}
+ #5. Comprobar si están los paquetes LVM2, mdadm, dosfstools, sgdisk
 
  function f_existeLVM2 {
         if  which lvm2; then
