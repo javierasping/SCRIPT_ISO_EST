@@ -13,7 +13,7 @@ function f_conexion {
          fi
  }
 
- #4. Comprobar si están los paquetes
+ #4. Comprobar si están los paquetes LVM2, mdadm, dosfstools, sgdisk
 
  function f_existeLVM2 {
         if  which lvm2; then
