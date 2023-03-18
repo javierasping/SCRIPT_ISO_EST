@@ -79,6 +79,15 @@ function f_existegdisk {
         fi
 }
 
+function f_detectadiscosvacios {
+    for i in {b..z}
+    do
+        if sfdisk -d /dev/vd$i 2>&1 | grep -q "does not contain a recognized partition table"; then
+            echo "/dev/vd$i"
+        fi
+    done
+}
+
 #6. Función para instalar dichos paquetes si están el sistema.
 
 #7. Función para comprobar el numero de dispositivos libres hay y además que>

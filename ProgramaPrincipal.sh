@@ -5,3 +5,5 @@
 . ./Funciones.sh
  
 f_conexion 
+
+f_detectadiscosvacios
