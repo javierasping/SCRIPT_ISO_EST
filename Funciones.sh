@@ -61,46 +61,13 @@ function f_actualización_repositorios_debian {
 
 #5. Función para ver si los paquetes están el sistema ( lvm2 mdadm dosfstool)
 
-function f_existeLVM2 {
-        if  which lvm2; then
-        echo "El comando lvm2 se encuentra en el sistema."
-        return 0
+function f_existepaquete {
+        if sudo dpkg -s $1 >/dev/null 2>&1; then
+           echo -e "El paquete $1 está instalado"
+           return 0
         else
-        echo "El comando lvm2 no se encuentra en el sistema."
-        return 1
-        fi
-}
-
-
-function f_existemdadm {
-        if  which mdadm; then
-        echo "El comando mdadm se encuentra en el sistema."
-        return 0
-        else
-        echo "El comando mdadm no se encuentra en el sistema."
-        return 1
-        fi
-}
-
-
-function f_existedosfstools {
-        if  which dosfstools; then
-        echo "El comando dosfstools se encuentra en el sistema."
-        return 0
-        else
-        echo "El comando dosfstools no se encuentra en el sistema."
-        return 1
-        fi
-}
-
-
-function f_existegdisk {
-        if  which sgdisk; then
-        echo "El comando sgdisk se encuentra en el sistema."
-        return 0
-        else
-        echo "El comando sgdisk no se encuentra en el sistema."
-        return 1
+           echo -e "El paquete $1 no está instalado"
+           return 1
         fi
 }
 

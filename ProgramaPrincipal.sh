@@ -28,3 +28,10 @@ f_detectadiscosvacios
 if [ $? -ne 0 ]; then
     exit 1
 fi
+
+
+#5. Función para ver si los paquetes están el sistema ( lvm2 mdadm dosfstool sgdisk)
+f_existepaquete lvm2
+f_existepaquete mdadm
+f_existepaquete dosfstools
+f_existepaquete sgdisk
