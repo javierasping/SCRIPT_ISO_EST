@@ -2,6 +2,8 @@
 Grupo conformado por Jose Carlos Rodriguez , Jairo Dominguez , Miguel Figueroa , Noelia Medina , Pedro Pozo y Francisco Javier Cruces 
 El programa esta conformado por dos ficheros uno principal y uno que contiene las funciones .
 
+Hacer que las funciones que tengan que devolver algo , lo almacenen en una variable para que podamos reutilizarlo para la ejecucion de la siguiente funcion .
+
 Crearemos el siguiente esquema :
 
 ![](./LVM_R5.png)
