@@ -116,9 +116,12 @@ function f_detectadiscosvacios {
 }
 
 #8. Función para partcionar un disco como en la práctica 5.
-
 function f_particionaundisco{
-
+   sgdisk -n 0:0:+50M -c 0:efi $disco1
+   sgdisk -n 0:0:+200M -c 0:boot $disco1
+   sgdisk -n 0:0:+1G -c 0:raiz $disco1
+   sgdisk -n 0:0:+700M -c 0:home $disco1
+   sgdisk -n 0:0:+50M -c 0:swap $disco1
 }
 
 #9. Función para copiar la tabla de partciones en los discos 2,3,4.
@@ -126,8 +129,6 @@ function f_particionaundisco{
 #10. Función para crear un RAID 5 con el 4 disco como spare.
 
 #11. Función para crear el volumen físico.
-
-#12. Función para crear grupo de volúmenes.
 
 #13. Función creamos los discos lógicos.
 
