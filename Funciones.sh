@@ -109,10 +109,17 @@ function f_detectadiscosvacios {
         return 1
     fi
 
-    echo "${discos[@]}"
+    disco1="${discos[0]}"
+    disco2="${discos[1]}"
+    disco3="${discos[2]}"
+    disco4="${discos[3]}"
 }
 
 #8. Función para partcionar un disco como en la práctica 5.
+
+function f_particionaundisco{
+
+}
 
 #9. Función para copiar la tabla de partciones en los discos 2,3,4.
 
