@@ -89,7 +89,7 @@ function f_existepaquete_instala_rocky {
                 sudo dnf $1
            return 1
         fi
-
+}
 
 
 #7. Función para comprobar el numero de dispositivos libres hay(min 4) , si no da error .
