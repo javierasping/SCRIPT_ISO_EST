@@ -49,16 +49,6 @@ function f_sistema_operativo_V2 {
 
 #4. Función para actualizar los repesitorios.
 
-#function f_actualización_repositorios_debian {
-#            sudo apt update -y
-#           if [ $? -eq 0 ]; then
-#           echo -e “Se han actualizado los repositorios”
-#            else
-#            echo -e “No se han podido actualizar por repositorios”
-#            exit 1
-#            fi
-#}
-
 
 function f_actualizar_repositorios {
 if [ -f /etc/debian_version ]; then
@@ -73,19 +63,31 @@ fi
 
 #5. Función para ver si los paquetes están el sistema ( lvm2 mdadm dosfstool)
 
-function f_existepaquete {
+function f_existepaquete_instala_debian {
         if sudo dpkg -s $1 >/dev/null 2>&1; then
            echo -e "El paquete $1 está instalado"
            return 0
         else
-           echo -e "El paquete $1 no está instalado, se procederá la instalació>
-                sudo dnf $1
+           echo -e "El paquete $1 no está instalado"
+           apt install -y $1
            return 1
         fi
 }
 
 
-#7. Función para comprobar el numero de dispositivos libres hay y además que>
+function f_existepaquete_instala_rocky {
+        if sudo dpkg -s $1 >/dev/null 2>&1; then
+           echo -e "El paquete $1 está instalado"
+           return 0
+        else
+           echo -e "El paquete $1 no está instalado"
+                sudo dnf $1
+           return 1
+        fi
+
+
+
+#7. Función para comprobar el numero de dispositivos libres hay(min 4) , si no da error .
 function f_detectadiscosvacios {
     local discos=()
     for i in {b..z}; do
