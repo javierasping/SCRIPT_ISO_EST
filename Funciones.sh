@@ -25,12 +25,6 @@ function f_conexion {
 
 #3. Función para comprobar que sistema operativo estamos utilizando.
 
-function f_sistemaoperativo { #noelia
-                  cat /etc/os-release | grep 'ID'
-              echo  'El sistema $sistema operativo es:'
-}
-
-
 
 function f_sistema_operativo_V2 {
     SO=$(lsb_release -d | awk '{print $2, $3}')
