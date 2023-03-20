@@ -49,16 +49,27 @@ function f_sistema_operativo_V2 {
 
 #4. Función para actualizar los repesitorios.
 
-
-function f_actualizar_repositorios {
-if [ -f /etc/debian_version ]; then
-   sudo apt update -y
-elif [ -f /etc/rocky-release ]; then
-    sudo dnf update -y
-else
-    echo "No se puede determinar el sistema operativo"
-fi
+function f_actualización_repositorios_debian {
+            sudo apt update -y >/dev/null 2>&1
+            if [ $? -eq 0 ]; then
+            echo -e “Se han actualizado los repositorios”
+            else
+            echo -e “No se han podido actualizar por repositorios”
+            exit 1
+            fi
 }
+
+function f_actualización_repositorios_rocky {
+            sudo dnf update -y >/dev/null 2>&1
+            if [ $? -eq 0 ]; then
+            echo -e “Se han actualizado los repositorios”
+            else
+            echo -e “No se han podido actualizar por repositorios”
+            exit 1
+            fi
+}
+
+
 
 
 #5. Función para ver si los paquetes están el sistema ( lvm2 mdadm dosfstool)
