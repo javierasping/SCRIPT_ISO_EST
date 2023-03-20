@@ -127,13 +127,18 @@ function f_particionaundisco{
 #9. Función para copiar la tabla de partciones en los discos 2,3,4.
 
 function f_copiado_tablas_particiones {
-    for i in b c do;sgdisk -r /dev/vd$i /dev/vda;sgisk -G /dev/vd$i;done
-    sgdisk -R ${discos[1]} ${discos[0]}
-    sgdisk -R ${discos[2]} ${discos[0]}
-    sgdisk -R ${discos[3]} ${discos[0]}
+    sgdisk -r $disco2 $disco1 && sgdisk -G $disco2
+    sgdisk -r $disco3 $disco1 && sgdisk -G $disco3
+    sgdisk -r $disco4 $disco1 && sgdisk -G $disco4
 }
+
 #10. Función para crear un RAID 5 con el 4 disco como spare.
 
+function f_creacion_raid5 {
+   mdadm --create /dev/md0 --level=5 --raid-decices=3 ${disco1[1]} ${disco2[1]} ${disco3[1]} --add-spare ${disco4[1]}
+   mdadm --create /dev/md1 --level=5 --raid-decices=3 ${disco1[2]} ${disco2[2]} ${disco3[2]} --add-spare ${disco4[2]}
+   mdadm --create /dev/md2 --level=5 --raid-decices=3 ${disco1[3]} ${disco2[3]} ${disco3[3]} --add-spare ${disco4[3]}
+}
 #11. Función para crear el volumen físico.
 
 #13. Función creamos los discos lógicos.
