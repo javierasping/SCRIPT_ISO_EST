@@ -116,7 +116,7 @@ function f_detectadiscosvacios {
 }
 
 #8. Función para partcionar un disco como en la práctica 5.
-function f_particionaundisco{
+function f_particionaundisco {
    sgdisk -n 0:0:+50M -c 0:efi $disco1
    sgdisk -n 0:0:+200M -c 0:boot $disco1
    sgdisk -n 0:0:+1G -c 0:raiz $disco1
@@ -124,21 +124,34 @@ function f_particionaundisco{
    sgdisk -n 0:0:+50M -c 0:swap $disco1
 }
 
+function f_particionaundisco_v2 {
+   sgdisk -n 0:0:+50M -c 0:efi $disco1
+   sgdisk -t 0:fd00 -n 0:0:+200M -c 0:boot $disco1
+   sgdisk -t 0:fd00 -n 0:0:+1G -c 0:raiz $disco1
+   sgdisk -t 0:fd00 -n 0:0:+700M -c 0:home $disco1
+   sgdisk -n 0:0:+50M -c 0:swap $disco1
+}
+
 #9. Función para copiar la tabla de partciones en los discos 2,3,4.
 
 function f_copiado_tablas_particiones {
-    sgdisk -r $disco2 $disco1 && sgdisk -G $disco2
-    sgdisk -r $disco3 $disco1 && sgdisk -G $disco3
-    sgdisk -r $disco4 $disco1 && sgdisk -G $disco4
+    sgdisk --replicate=$disco2 $disco1
+    sgdisk --replicate=$disco3 $disco1
+    sgdisk --replicate=$disco4 $disco1
+    sgdisk --randomize-guids $disco2
+    sgdisk --randomize-guids $disco3
+    sgdisk --randomize-guids $disco4
+
 }
 
 #10. Función para crear un RAID 5 con el 4 disco como spare.
 
 function f_creacion_raid5 {
-   mdadm --create /dev/md0 --level=5 --raid-decices=3 ${disco1[1]} ${disco2[1]} ${disco3[1]} --add-spare ${disco4[1]}
-   mdadm --create /dev/md1 --level=5 --raid-decices=3 ${disco1[2]} ${disco2[2]} ${disco3[2]} --add-spare ${disco4[2]}
-   mdadm --create /dev/md2 --level=5 --raid-decices=3 ${disco1[3]} ${disco2[3]} ${disco3[3]} --add-spare ${disco4[3]}
+   mdadm --create /dev/md0 --level=5 --raid-devices=4 $disco1_1 $disco2_1 $disco3_1 $disco4_1
+   mdadm --create /dev/md1 --level=5 --raid-devices=4 $disco1_3 $disco2_3 $disco3_3 $disco4_3
+   mdadm --create /dev/md2 --level=5 --raid-devices=4 $disco1_4 $disco2_4 $disco3_4 $disco4_4
 }
+
 #11. Función para crear el volumen físico.
 
 #13. Función creamos los discos lógicos.
