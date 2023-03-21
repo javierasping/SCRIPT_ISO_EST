@@ -9,6 +9,7 @@ f_somosroot
 if [ $? -ne 0 ]; then
     exit 1
 fi
+echo '1 ok --------------------------------------------------------------'
 
 
 #2.Comprobar si tenemos conexion a internet 
@@ -16,6 +17,8 @@ f_conexion
 if [ $? -ne 0 ]; then
     exit 1
 fi
+echo '2 ok --------------------------------------------------------------'
+
 
 #3. Función para comprobar que sistema operativo estamos utilizando.
 
@@ -37,6 +40,7 @@ if [ $? -eq 3 ]; then
         done
     fi
 fi
+echo '3 ok --------------------------------------------------------------'
 
 
 
@@ -49,6 +53,8 @@ fi
 
 #Particionado del disco1
 f_particionaundisco
+echo '8 ok --------------------------------------------------------------'
+
 
 
 #Creamos /dev/vdb2 ejmplo
@@ -81,7 +87,36 @@ disco4_5=${disco4}5
 
 
 f_copiado_tablas_particiones
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+echo '9 ok --------------------------------------------------------------'
+
 
 f_creacion_raid5
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+echo '10 ok ------------------------------------------------------------'
+echo $disco1_2 $disco2_2 $disco3_2 $disco4_2
+
+f_creacion_del_volumen_fisico
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+echo '11 ok -------------------------------------------------------------'
+
+f_crecion_grupo_volumenes
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+echo '12 ok -------------------------------------------------------------'
+
+f_creacion_volumen_logico
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+echo '13 ok -------------------------------------------------------------'
+
 
 

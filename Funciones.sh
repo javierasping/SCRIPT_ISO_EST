@@ -41,6 +41,7 @@ function f_sistema_operativo_V2 {
 
 
 
+
 #4. Función para actualizar los repesitorios.
 
 function f_actualización_repositorios_debian {
@@ -132,6 +133,7 @@ function f_particionaundisco_v2 {
    sgdisk -n 0:0:+50M -c 0:swap $disco1
 }
 
+
 #9. Función para copiar la tabla de partciones en los discos 2,3,4.
 
 function f_copiado_tablas_particiones {
@@ -141,18 +143,37 @@ function f_copiado_tablas_particiones {
     sgdisk --randomize-guids $disco2
     sgdisk --randomize-guids $disco3
     sgdisk --randomize-guids $disco4
-
+    partprobe
 }
 
 #10. Función para crear un RAID 5 con el 4 disco como spare.
 
 function f_creacion_raid5 {
-   mdadm --create /dev/md0 --level=5 --raid-devices=4 $disco1_1 $disco2_1 $disco3_1 $disco4_1
+   mdadm --create /dev/md0 --level=5 --raid-devices=4 $disco1_2 $disco2_2 $disco3_2 $disco4_2
    mdadm --create /dev/md1 --level=5 --raid-devices=4 $disco1_3 $disco2_3 $disco3_3 $disco4_3
    mdadm --create /dev/md2 --level=5 --raid-devices=4 $disco1_4 $disco2_4 $disco3_4 $disco4_4
+   partprobe
 }
 
+
 #11. Función para crear el volumen físico.
+function f_creacion_del_volumen_fisico {
+        pvcreate /dev/md0
+        pvcreate /dev/md1
+        pvcreate /dev/md2
+}
+
+#12.
+function f_crecion_grupo_volumenes {
+        vgcreate RM /dev/md0 /dev/md1 /dev/md2
+}
+
 
 #13. Función creamos los discos lógicos.
+function f_creacion_volumen_logico {
+         lvcreate -n VOL1 -L 1G RM
+         lvcreate -n VOL2 -L 1G RM
+         lvcreate -n VOL3 -L 1G RM
+}
+
 
