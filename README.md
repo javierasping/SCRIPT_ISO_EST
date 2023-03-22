@@ -1,5 +1,5 @@
 # SCRIPT_ISO_EST
-Grupo conformado por Jose Carlos Rodriguez , Jairo Dominguez , Miguel Figueroa , Noelia Medina , Pedro Pozo y Francisco Javier Cruces 
+Grupo conformado por Jose Carlos Rodriguez , Jairo Dominguez , Miguel Figueroa , Noelia Medina , Pedro Oliver Pozo y Francisco Javier Cruces 
 El programa esta conformado por dos ficheros uno principal y uno que contiene las funciones .
 
 Hacer que las funciones que tengan que devolver algo , lo almacenen en una variable para que podamos reutilizarlo para la ejecucion de la siguiente funcion .
