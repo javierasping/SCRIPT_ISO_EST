@@ -1,0 +1,9 @@
+#Borrar la estructura
+lvremove /dev/mapper/*
+vgreduce RM /dev/md{0..2}
+vgremove RM
+pvremove /dev/md{0..2}
+mdadm --stop /dev/md{0..2}
+sgdisk -Z /dev/vd{b..z}
+partprobe
+reboot
